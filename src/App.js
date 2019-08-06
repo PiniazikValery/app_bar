@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Responsive from 'react-responsive'
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
 import Toolbar from '@material-ui/core/Toolbar';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { SearchIcon } from './icons';
@@ -8,7 +11,8 @@ import {
   Logo, PlaceholderForSearch, Grow,
   ToolBar, SearchElement, SearchInput,
   SearchButton, OpenSearchButton, SearchElementsWrapper,
-  AppBar, InputSearchIcon
+  AppBar, InputSearchIcon, MobileSecondToolBar,
+  Avatar
 } from './AppStyledComponents';
 import './App.css';
 
@@ -75,6 +79,19 @@ function App() {
               </SearchElement>
             </PlaceholderForSearch>
           </ToolBar>
+          <MobileSecondToolBar open={!searchIsOpen}>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+          </MobileSecondToolBar>
         </AppBar>
       </Mobile>
       <Default>

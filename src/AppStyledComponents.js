@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Avatar from '@material-ui/core/Avatar';
 import { SearchIcon } from './icons';
 import AppBar from '@material-ui/core/AppBar';
 
@@ -22,6 +23,22 @@ export const PlaceholderForSearch = styled.div`
 export const ToolBar = styled(Toolbar)`
     padding:0 !important;
     padding-left: 12px !important;
+`
+
+export const MobileSecondToolBar = styled(Toolbar)`
+    padding:0 !important;
+    padding-left: 12px !important;
+    margin: auto;
+    min-height:0px !important;
+    overflow: hidden;
+    transition: 0.5s;
+    ${(props) => {
+        if (!props.open) {
+            return 'height: 0px;'
+        } else {
+            return 'height: 50px;'
+        }
+    }}
 `
 
 export const Grow = styled.div`
@@ -95,7 +112,7 @@ const _AppBar = styled(AppBar)`
 `
 
 export const InputSearchIcon = styled(SearchIcon)`
-    color: black;
+    color: gray;
     position: absolute !important;
     ${(props) => {
         if (!props.open) {
@@ -106,4 +123,11 @@ export const InputSearchIcon = styled(SearchIcon)`
     }}
 `
 
+const _Avatar = styled(Avatar)`
+    margin: 10px;
+    width: 25px !important;
+    height: 25px !important;
+`
+
+export { _Avatar as Avatar };
 export { _AppBar as AppBar };
