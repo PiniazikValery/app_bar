@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Responsive from 'react-responsive'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,11 +16,31 @@ const Mobile = props => <Responsive {...props} maxWidth={414} />;
 const Default = props => <Responsive {...props} minWidth={415} />;
 
 function App() {
+
   const [searchIsOpen, setOpenSearch] = useState(false);
+  const wrapperRef = useRef(0);
+
+  useEffect(() => document.addEventListener('mousedown', handleClickOutside), []);
+
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, []);
 
   const openSearchInput = () => setOpenSearch(true);
 
   const closeSearchInput = () => setOpenSearch(false);
+
+  const setWrapperRef = (node) => {
+    wrapperRef.current = node;
+  };
+
+  const handleClickOutside = (event) => {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      closeSearchInput();
+    }
+  }
 
   return (
     <div className="App">
@@ -47,10 +67,10 @@ function App() {
                 <SearchIcon />
               </OpenSearchButton>
               <SearchElement open={searchIsOpen}>
-                <SearchElementsWrapper rightIndent={12}>
+                <SearchElementsWrapper ref={setWrapperRef} rightIndent={12}>
                   <InputSearchIcon open={searchIsOpen} />
                   <SearchInput type="search" />
-                  <SearchButton onClick={closeSearchInput}>НАЙТИ</SearchButton>
+                  <SearchButton>НАЙТИ</SearchButton>
                 </SearchElementsWrapper>
               </SearchElement>
             </PlaceholderForSearch>
