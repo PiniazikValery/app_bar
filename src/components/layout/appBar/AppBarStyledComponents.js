@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
-import { SearchIcon } from './icons';
+import { SearchIcon } from '../../../icons';
 import AppBar from '@material-ui/core/AppBar';
 
 export const Logo = styled.img`
     margin-top:6.5px;
     background-size:100% auto;
+    margin-right: 5px;
     height:27px;
     outline:0;
     position:relative;
@@ -17,7 +18,11 @@ export const PlaceholderForSearch = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    width:100%;
+    ${(props) => {
+        if (props.width) {
+            return `width: ${props.width}%;`
+        }
+    }}
 `
 
 export const ToolBar = styled(Toolbar)`
@@ -47,6 +52,7 @@ export const MobileSecondToolBar = styled(Toolbar)`
 
 export const Grow = styled.div`
     flex-grow:1;
+    width: 100%;
 `
 
 export const SearchElement = styled.div`
