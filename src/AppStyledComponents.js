@@ -27,9 +27,10 @@ export const ToolBar = styled(Toolbar)`
 
 export const MobileSecondToolBar = styled(Toolbar)`
     padding:0 !important;
-    padding-left: 12px !important;
-    margin: auto;
     min-height:0px !important;
+    justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
     overflow: hidden;
     transition: 0.5s;
     ${(props) => {
@@ -39,6 +40,9 @@ export const MobileSecondToolBar = styled(Toolbar)`
             return 'height: 50px;'
         }
     }}
+    & > .centerChild {
+        margin: auto;
+    }
 `
 
 export const Grow = styled.div`
