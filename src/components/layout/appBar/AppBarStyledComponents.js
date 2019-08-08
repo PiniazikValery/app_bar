@@ -94,6 +94,7 @@ export const SearchButton = styled.button`
 `
 
 export const OpenSearchButton = styled(IconButton)`
+    margin-left: 2px !important;
     &:hover {
         background-color: transparent !important;
     }

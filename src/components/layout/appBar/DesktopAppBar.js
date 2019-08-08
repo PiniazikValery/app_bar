@@ -5,17 +5,36 @@ import {
     SearchElement, SearchElementsWrapper, InputSearchIcon,
     SearchInput, Avatar, SearchButton
 } from './AppBarStyledComponents';
+import { MenuDropDown } from '../menuDropDown'
 import { SearchIcon } from '../../../icons';
 import { IconButton, Badge } from '@material-ui/core';
 import { Mail, Notifications } from '@material-ui/icons';
+import { Tablet, Desktop } from '../../../responsiveDesignSwitch';
 
 function DesktopAppBar(props) {
     return (
         <AppBar position="fixed">
             <ToolBar>
-                <Logo src="/Logo.png" />
+                <Desktop>
+                    <Logo src="/Logo.png" />
+                </Desktop>
+                <Tablet>
+                    <Logo src="/Logo_min.svg" />
+                </Tablet>
                 <PlaceholderForSearch>
-                    Some tools will be here
+                    <Desktop>
+                        <MenuDropDown dropDownTitle="Ссылки" />
+                        <MenuDropDown dropDownTitle="Контакты" />
+                        <MenuDropDown dropDownTitle="Тег" />
+                        <MenuDropDown dropDownTitle="Просьбы" />
+                        <MenuDropDown dropDownTitle="Избранное" />
+                        <MenuDropDown dropDownTitle="Посещение" />
+                    </Desktop>
+                    <Tablet>
+                        <MenuDropDown dropDownTitle="Ссылки" />
+                        <MenuDropDown dropDownTitle="Контакты" />
+                        <MenuDropDown dropDownTitle="Тег" />
+                    </Tablet>
                     <OpenSearchButton
                         onClick={props.openSearchInput}
                         edge="start"
