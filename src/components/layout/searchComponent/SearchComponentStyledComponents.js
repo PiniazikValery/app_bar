@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Paper } from '@material-ui/core';
 import { SearchIcon } from '../../../icons';
 
 export const SearchElement = styled.div`
@@ -58,6 +57,7 @@ export const SearchButton = styled.button`
     text-align: center;
     height: 70%;
     width: 70px;
+    outline: none;
 `
 
 export const SearchInput = styled.input`
@@ -69,12 +69,5 @@ export const SearchInput = styled.input`
     border: 0;
     width: 100%;
     height: 70%;
-`
-
-export const Filter = styled(Paper)`
-    width: 350px;
-    height: 300px;
-    top: 87%;
-    left: 0px;
-    position: absolute;
+    outline: none;
 `

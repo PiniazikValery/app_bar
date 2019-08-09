@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SearchElement, SearchElementsWrapper, InputSearchIcon,
-    SearchButton, SearchInput, Filter
+    SearchButton, SearchInput
 } from './SearchComponentStyledComponents'
+import { FilterComponent } from '../filterComponent'
 
 function SearchComponent(props) {
+
+    const [filterIsOpened, setFilterOpen] = useState(false);
+
+    const handleInputFocus = () => {
+        openFilter();
+    }
+
+    const closeFilter = () => {
+        setFilterOpen(false);
+    }
+
+    const openFilter = () => {
+        setFilterOpen(true);
+    }
+
+    useEffect(() => {
+        if (!props.searchIsOpen) {
+            closeFilter();
+        }
+    });
+
     return (
-        <SearchElement open={props.searchIsOpen}>
-            {props.searchIsOpen && props.isDesktop ? <Filter>12345</Filter> : null}
+        <SearchElement open={props.searchIsOpen} >
             <SearchElementsWrapper ref={props.setWrapperRef} rightIndent={props.rightIndent}>
+                {props.searchIsOpen && props.isDesktop && filterIsOpened ? <FilterComponent /> : null}
                 <InputSearchIcon open={props.searchIsOpen} />
-                <SearchInput type="search" />
+                <SearchInput onFocus={handleInputFocus} type="search" />
                 <SearchButton>НАЙТИ</SearchButton>
             </SearchElementsWrapper>
         </SearchElement>
