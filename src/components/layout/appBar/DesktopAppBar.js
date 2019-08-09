@@ -2,9 +2,9 @@ import React from 'react';
 import {
     AppBar, ToolBar, PlaceholderForSearch,
     Logo, Grow, OpenSearchButton,
-    SearchElement, SearchElementsWrapper, InputSearchIcon,
-    SearchInput, Avatar, SearchButton
+    Avatar, AddCircleIcon
 } from './AppBarStyledComponents';
+import { SearchComponent } from '../searchComponent'
 import { MenuDropDown } from '../menuDropDown'
 import { SearchIcon } from '../../../icons';
 import { IconButton, Badge } from '@material-ui/core';
@@ -44,14 +44,13 @@ function DesktopAppBar(props) {
                     >
                         <SearchIcon />
                     </OpenSearchButton>
-                    <SearchElement open={props.searchIsOpen}>
-                        <SearchElementsWrapper ref={props.setWrapperRef}>
-                            <InputSearchIcon open={props.searchIsOpen} />
-                            <SearchInput type="search" />
-                            <SearchButton>НАЙТИ</SearchButton>
-                        </SearchElementsWrapper>
-                    </SearchElement>
+                    <SearchComponent
+                        searchIsOpen={props.searchIsOpen}
+                        setWrapperRef={props.setWrapperRef}
+                        isDesktop={true}
+                    />
                 </PlaceholderForSearch>
+                <AddCircleIcon />
                 <Grow />
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">
