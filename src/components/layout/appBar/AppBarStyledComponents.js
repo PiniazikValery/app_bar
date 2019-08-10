@@ -3,6 +3,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import { AddCircleIcon } from '../../../icons';
+import { Button } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 
 export const Logo = styled.img`
@@ -76,6 +77,15 @@ const _Avatar = styled(Avatar)`
     height: 25px !important;
 `
 
+const _Button = styled(Button)`
+    font-size: 15px !important;
+    min-width: 20px !important;
+    padding: 6px 6px !important;
+    text-transform: inherit !important;
+    color: white !important;
+`
+
 export { _Avatar as Avatar };
 export { _AppBar as AppBar };
 export { _AddCircleIcon as AddCircleIcon };
+export { _Button as Button };

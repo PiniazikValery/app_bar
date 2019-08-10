@@ -2,7 +2,7 @@ import React from 'react';
 import {
     AppBar, ToolBar, PlaceholderForSearch,
     Logo, Grow, OpenSearchButton,
-    Avatar, AddCircleIcon
+    Avatar, AddCircleIcon, Button
 } from './AppBarStyledComponents';
 import { SearchComponent } from '../searchComponent'
 import { MenuDropDown } from '../menuDropDown'
@@ -24,7 +24,7 @@ function DesktopAppBar(props) {
                 <PlaceholderForSearch>
                     <Desktop>
                         <MenuDropDown dropDownTitle="Ссылки" />
-                        <MenuDropDown dropDownTitle="Контакты" />
+                        <Button>Контакты</Button>
                         <MenuDropDown dropDownTitle="Тег" />
                         <MenuDropDown dropDownTitle="Просьбы" />
                         <MenuDropDown dropDownTitle="Избранное" />
@@ -32,7 +32,7 @@ function DesktopAppBar(props) {
                     </Desktop>
                     <Tablet>
                         <MenuDropDown dropDownTitle="Ссылки" />
-                        <MenuDropDown dropDownTitle="Контакты" />
+                        <Button>Контакты</Button>
                         <MenuDropDown dropDownTitle="Тег" />
                     </Tablet>
                     <OpenSearchButton
