@@ -8,11 +8,15 @@ function AppBar() {
     const [searchIsOpen, setOpenSearch] = useState(false);
     const wrapperRef = useRef(0);
 
-    useEffect(() => document.addEventListener('mousedown', handleClickOutside), []);
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside)
+        window.addEventListener('resize', closeSearchInput);
+    }, []);
 
     useEffect(() => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener('resize', closeSearchInput);
         }
     }, []);
 

@@ -5,10 +5,9 @@ import { SearchIcon } from '../../../icons';
 import {
     AppBar, ToolBar, PlaceholderForSearch,
     Logo, Grow, OpenSearchButton,
-    SearchElement, SearchElementsWrapper, InputSearchIcon,
-    SearchInput, MobileSecondToolBar, Avatar,
-    SearchButton
+    MobileSecondToolBar, Avatar,
 } from './AppBarStyledComponents';
+import { SearchComponent } from '../searchComponent';
 
 function MobileAppBar(props) {
     return (
@@ -33,13 +32,11 @@ function MobileAppBar(props) {
                     >
                         <SearchIcon />
                     </OpenSearchButton>
-                    <SearchElement open={props.searchIsOpen}>
-                        <SearchElementsWrapper ref={props.setWrapperRef} rightIndent={12}>
-                            <InputSearchIcon open={props.searchIsOpen} />
-                            <SearchInput type="search" />
-                            <SearchButton>НАЙТИ</SearchButton>
-                        </SearchElementsWrapper>
-                    </SearchElement>
+                    <SearchComponent
+                        searchIsOpen={props.searchIsOpen}
+                        setWrapperRef={props.setWrapperRef}
+                        rightIndent={12}
+                    />
                 </PlaceholderForSearch>
             </ToolBar>
             <MobileSecondToolBar open={!props.searchIsOpen}>
